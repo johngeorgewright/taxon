@@ -1,0 +1,29 @@
+#!/bin/bash
+usage()
+{
+  echo "USAGE: $0 [new|branch|tag|update]"
+  exit 1
+}
+
+# Root directory
+root_dir="$( cd -P "$( dirname "$0" )" && pwd )"
+
+# Check for script parameters
+if [[ $# -lt 1 ]]
+then
+  usage
+fi
+
+# Run script
+case "$1" in
+  new) source $root_dir/scripts/new.sh
+  ;;
+  branch) source $root_dir/scripts/branch.sh
+  ;;
+  tag) source $root_dir/scripts/tag.sh
+  ;;
+  update) source $root_dir/scripts/update.sh
+  ;;
+  *) usage
+  ;;
+esac
